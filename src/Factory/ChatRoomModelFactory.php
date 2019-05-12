@@ -2,43 +2,41 @@
 /**
  * Created by PhpStorm.
  * User: ailuoy
- * Date: 2019/5/5
- * Time: 下午2:58
+ * Date: 2019/5/6
+ * Time: 下午4:53
  */
 
-namespace Ailuoy\NeteaseIm;
+namespace Ailuoy\NeteaseIm\Factory;
 
+use Ailuoy\NeteaseIm\Models\ChatRoom\Create;
+use Ailuoy\NeteaseIm\Models\ChatRoom\Get;
+use Ailuoy\NeteaseIm\Models\ChatRoom\GetBatch;
+use Ailuoy\NeteaseIm\ResultReturn;
 use Ailuoy\NeteaseIm\Exceptions\ResultReturnException;
-use Ailuoy\NeteaseIm\Factory\FriendModelFactory;
-use Ailuoy\NeteaseIm\Factory\UserModelFactory;
 
 /**
- * @property UserModelFactory   user
- * @property FriendModelFactory friend
+ * @property Create   create
+ * @property Get      get
+ * @property GetBatch getBatch
  *
- * Class NeteaseIm
- * @package Ailuoy\NeteaseIm
+ *
+ * Class ModuleFactory
+ * @package Ailuoy\NeteaseIm\Factory
  */
-class NeteaseIm
+class ChatRoomModelFactory
 {
-    static public $appKey;
-    static public $appSecret;
-
-    public function __construct($appKey, $appSecret)
-    {
-        self::$appKey = $appKey;
-        self::$appSecret = $appSecret;
-    }
 
     private function modelList()
     {
         $modelList = [
-            'user'   => UserModelFactory::class,
-            'friend' => FriendModelFactory::class,
+            'create'   => Create::class,
+            'get'      => Get::class,
+            'getBatch' => GetBatch::class
         ];
 
         return ResultReturn::success($modelList);
     }
+
 
     private function __clone()
     {

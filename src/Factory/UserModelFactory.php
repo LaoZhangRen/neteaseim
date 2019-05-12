@@ -8,6 +8,8 @@
 
 namespace Ailuoy\NeteaseIm\Factory;
 
+use Ailuoy\NeteaseIm\Models\User\ListBlackAndMuteList;
+use Ailuoy\NeteaseIm\Models\User\SetSpecialRelation;
 use Ailuoy\NeteaseIm\ResultReturn;
 use Ailuoy\NeteaseIm\Models\User\Mute;
 use Ailuoy\NeteaseIm\Models\User\Block;
@@ -22,16 +24,18 @@ use Ailuoy\NeteaseIm\Models\User\RefreshToken;
 use Ailuoy\NeteaseIm\Exceptions\ResultReturnException;
 
 /**
- * @property GetUinfos    getUinfos
- * @property Create       create
- * @property Update       update
- * @property RefreshToken refreshToken
- * @property Block        block
- * @property UnBlock      unblock
- * @property UpdateUinfo  updateUinfo
- * @property SetDonnop    setDonnop
- * @property Mute         mute
- * @property MuteAv       muteAv
+ * @property GetUinfos            getUinfos
+ * @property Create               create
+ * @property Update               update
+ * @property RefreshToken         refreshToken
+ * @property Block                block
+ * @property UnBlock              unblock
+ * @property UpdateUinfo          updateUinfo
+ * @property SetDonnop            setDonnop
+ * @property Mute                 mute
+ * @property MuteAv               muteAv
+ * @property SetSpecialRelation   setSpecialRelation
+ * @property ListBlackAndMuteList listBlackAndMuteList
  *
  *
  * Class ModuleFactory
@@ -43,16 +47,18 @@ class UserModelFactory
     private function modelList()
     {
         $modelList = [
-            'getUinfos'    => GetUinfos::class,
-            'create'       => Create::class,
-            'update'       => Update::class,
-            'refreshToken' => RefreshToken::class,
-            'block'        => Block::class,
-            'unblock'      => UnBlock::class,
-            'updateUinfo'  => UpdateUinfo::class,
-            'setDonnop'    => SetDonnop::class,
-            'mute'         => Mute::class,
-            'muteAv'       => MuteAv::class,
+            'getUinfos'            => GetUinfos::class,
+            'create'               => Create::class,
+            'update'               => Update::class,
+            'refreshToken'         => RefreshToken::class,
+            'block'                => Block::class,
+            'unblock'              => UnBlock::class,
+            'updateUinfo'          => UpdateUinfo::class,
+            'setDonnop'            => SetDonnop::class,
+            'mute'                 => Mute::class,
+            'muteAv'               => MuteAv::class,
+            'setSpecialRelation'   => SetSpecialRelation::class,
+            'listBlackAndMuteList' => ListBlackAndMuteList::class
         ];
 
         return ResultReturn::success($modelList);

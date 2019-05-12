@@ -9,6 +9,7 @@
 namespace Ailuoy\NeteaseIm\Factory;
 
 use Ailuoy\NeteaseIm\Models\Friend\Delete;
+use Ailuoy\NeteaseIm\Models\Friend\Get;
 use Ailuoy\NeteaseIm\Models\Friend\Update;
 use Ailuoy\NeteaseIm\ResultReturn;
 use Ailuoy\NeteaseIm\Models\Friend\Add;
@@ -18,6 +19,7 @@ use Ailuoy\NeteaseIm\Exceptions\ResultReturnException;
  * @property Add    add
  * @property Update update
  * @property Delete delete
+ * @property Get    get
  *
  *
  * Class ModuleFactory
@@ -31,7 +33,8 @@ class FriendModelFactory
         $modelList = [
             'add'    => Add::class,
             'update' => Update::class,
-            'delete' => Delete::class
+            'delete' => Delete::class,
+            'get'    => Get::class
         ];
 
         return ResultReturn::success($modelList);

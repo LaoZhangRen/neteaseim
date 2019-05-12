@@ -9,10 +9,10 @@
 namespace Ailuoy\NeteaseIm\Factory;
 
 
-use Ailuoy\NeteaseIm\Exceptions\RequestErrorException;
 use GuzzleHttp\Client;
-use Ailuoy\NeteaseIm\NeteaseIm;
 use Ailuoy\NeteaseIm\ResultReturn;
+use Ailuoy\NeteaseIm\Client as NeteaseClient;
+use Ailuoy\NeteaseIm\Exceptions\RequestErrorException;
 use Ailuoy\NeteaseIm\Exceptions\ParameterErrorException;
 
 class HttpClient
@@ -27,10 +27,10 @@ class HttpClient
         $now = strval(time());
         $nonce = md5($now);
         $headers = [
-            'AppKey'       => NeteaseIm::$appKey,
+            'AppKey'       => NeteaseClient::$appKey,
             'Nonce'        => $nonce,
             'CurTime'      => $now,
-            'CheckSum'     => sha1(NeteaseIm::$appSecret . $nonce . $now),
+            'CheckSum'     => sha1(NeteaseClient::$appSecret . $nonce . $now),
             'Content-Type' => 'application/x-www-form-urlencoded',
         ];
 
@@ -52,6 +52,7 @@ class HttpClient
         try {
             $body = get_url_query($body);
         } catch (\Exception $e) {
+            dd($body);
             throw new ParameterErrorException('转换为query_string失败');
         }
 
