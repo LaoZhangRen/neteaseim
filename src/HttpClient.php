@@ -52,7 +52,6 @@ class HttpClient
         try {
             $body = get_url_query($body);
         } catch (\Exception $e) {
-            dd($body);
             throw new ParameterErrorException('转换为query_string失败');
         }
 
