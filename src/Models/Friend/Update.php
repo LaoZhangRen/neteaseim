@@ -14,17 +14,22 @@ use Ailuoy\NeteaseIm\Translate;
 
 class Update extends Model
 {
+
     /**
      * 更新好友相关信息
      *
-     * @param string $accid
-     * @param string $faccid
+     * @param string $accId
+     * @param string $faccId
      *
      * @return mixed
+     * @throws \Ailuoy\NeteaseIm\Exceptions\ParameterErrorException
+     * @throws \Ailuoy\NeteaseIm\Exceptions\RequestErrorException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * https://dev.yunxin.163.com/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/%E6%9C%8D%E5%8A%A1%E7%AB%AFAPI%E6%96%87%E6%A1%A3/%E7%94%A8%E6%88%B7%E5%85%B3%E7%B3%BB%E6%89%98%E7%AE%A1?#%E6%9B%B4%E6%96%B0%E5%A5%BD%E5%8F%8B%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF
      */
-    public function go(string $accid, string $faccid)
+    public function go(string $accId, string $faccId)
     {
-        $parameters = $this->mergeArgs(['accid' => $accid, 'faccid' => $faccid]);
+        $parameters = $this->mergeArgs(['accid' => $accId, 'faccid' => $faccId]);
         $this->validation($this->rules(), $this->messages(), $parameters);
 
         return $this->sendRequest('POST', 'nimserver/friend/update.action', $parameters);
@@ -72,7 +77,10 @@ class Update extends Model
         return $this;
     }
 
-    private function rules()
+    /**
+     * @return array
+     */
+    private function rules(): array
     {
         return [
             'accid'    => 'required|string|max:32',
@@ -83,7 +91,10 @@ class Update extends Model
         ];
     }
 
-    private function messages()
+    /**
+     * @return array
+     */
+    private function messages(): array
     {
         return [
             'accid.required'  => '加好友发起者accid : ' . Translate::VALIDATE_REQUIRED,

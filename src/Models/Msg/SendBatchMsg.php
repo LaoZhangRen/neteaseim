@@ -25,6 +25,10 @@ class SendBatchMsg extends Model
      * @param string $body
      *
      * @return mixed
+     * @throws \Ailuoy\NeteaseIm\Exceptions\ParameterErrorException
+     * @throws \Ailuoy\NeteaseIm\Exceptions\RequestErrorException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * https://dev.yunxin.163.com/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/%E6%9C%8D%E5%8A%A1%E7%AB%AFAPI%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD?#%E6%89%B9%E9%87%8F%E5%8F%91%E9%80%81%E7%82%B9%E5%AF%B9%E7%82%B9%E6%99%AE%E9%80%9A%E6%B6%88%E6%81%AF
      */
     public function go(string $fromAccId, array $toAccIds, int $type, string $body)
     {
@@ -155,7 +159,7 @@ class SendBatchMsg extends Model
     /**
      * @return array
      */
-    private function rules()
+    private function rules(): array
     {
         return [
             'fromAccid'   => 'required|string|max:32',
@@ -187,7 +191,7 @@ class SendBatchMsg extends Model
     /**
      * @return array
      */
-    private function messages()
+    private function messages(): array
     {
         return [
             'fromAccid.required'  => '发送者accid: 必须填写',

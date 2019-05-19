@@ -25,6 +25,10 @@ class Recall extends Model
      * @param string $to
      *
      * @return mixed
+     * @throws \Ailuoy\NeteaseIm\Exceptions\ParameterErrorException
+     * @throws \Ailuoy\NeteaseIm\Exceptions\RequestErrorException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * https://dev.yunxin.163.com/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/%E6%9C%8D%E5%8A%A1%E7%AB%AFAPI%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD?#%E6%B6%88%E6%81%AF%E6%92%A4%E5%9B%9E
      */
     public function go(string $deleteMsgId, int $timeTag, int $type, string $from, string $to)
     {
@@ -82,7 +86,10 @@ class Recall extends Model
         return $this;
     }
 
-    private function rules()
+    /**
+     * @return array
+     */
+    private function rules(): array
     {
         return [
             'deleteMsgid' => 'required|string',
@@ -105,7 +112,10 @@ class Recall extends Model
         ];
     }
 
-    private function messages()
+    /**
+     * @return array
+     */
+    private function messages(): array
     {
         return [
             'deleteMsgid.required' => '要撤回消息的msgid : ' . Translate::VALIDATE_REQUIRED,

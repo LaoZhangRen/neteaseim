@@ -21,6 +21,10 @@ class Upload extends Model
      * @param string $content
      *
      * @return mixed
+     * @throws ParameterErrorException
+     * @throws \Ailuoy\NeteaseIm\Exceptions\RequestErrorException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * https://dev.yunxin.163.com/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/%E6%9C%8D%E5%8A%A1%E7%AB%AFAPI%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD?#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0
      */
     public function go(string $content)
     {
@@ -90,7 +94,10 @@ class Upload extends Model
         return $this;
     }
 
-    private function rules()
+    /**
+     * @return array
+     */
+    private function rules(): array
     {
         return [
             'content'   => 'required|string',
@@ -101,7 +108,10 @@ class Upload extends Model
         ];
     }
 
-    private function messages()
+    /**
+     * @return array
+     */
+    private function messages(): array
     {
         return [
             'content.required'  => '字符流base64串(Base64.encode(bytes)) : ' . Translate::VALIDATE_REQUIRED,

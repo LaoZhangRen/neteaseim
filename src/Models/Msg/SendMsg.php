@@ -250,7 +250,7 @@ class SendMsg extends Model
     /**
      * @return array
      */
-    private function rules()
+    private function rules(): array
     {
         return [
             'from'             => 'required|string|max:32',
@@ -305,7 +305,7 @@ class SendMsg extends Model
     /**
      * @return array
      */
-    private function messages()
+    private function messages(): array
     {
         return [
             'from.required'           => '发送者accid : ' . Translate::VALIDATE_REQUIRED,

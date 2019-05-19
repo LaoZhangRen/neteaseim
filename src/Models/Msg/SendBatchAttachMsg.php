@@ -23,6 +23,10 @@ class SendBatchAttachMsg extends Model
      * @param string $attach
      *
      * @return mixed
+     * @throws \Ailuoy\NeteaseIm\Exceptions\ParameterErrorException
+     * @throws \Ailuoy\NeteaseIm\Exceptions\RequestErrorException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * https://dev.yunxin.163.com/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/%E6%9C%8D%E5%8A%A1%E7%AB%AFAPI%E6%96%87%E6%A1%A3/%E6%B6%88%E6%81%AF%E5%8A%9F%E8%83%BD?#%E6%89%B9%E9%87%8F%E5%8F%91%E9%80%81%E7%82%B9%E5%AF%B9%E7%82%B9%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B3%BB%E7%BB%9F%E9%80%9A%E7%9F%A5
      */
     public function go(string $fromAccId, array $toAccIds, string $attach)
     {
@@ -115,7 +119,7 @@ class SendBatchAttachMsg extends Model
     /**
      * @return array
      */
-    private function rules()
+    private function rules(): array
     {
         return [
             'fromAccid'   => 'required|string|max:32',
@@ -136,7 +140,7 @@ class SendBatchAttachMsg extends Model
     /**
      * @return array
      */
-    private function messages()
+    private function messages(): array
     {
         return [
             'fromAccid.required' => '发送者accid : ' . Translate::VALIDATE_REQUIRED,

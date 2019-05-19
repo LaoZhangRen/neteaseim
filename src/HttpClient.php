@@ -68,7 +68,8 @@ class HttpClient
         $content = json_decode($response->getBody()->getContents(), true);
         if ($content['code'] != 200) {
             $statusCode = $content['code'];
-            throw new RequestErrorException('code: ' . $statusCode . ' msg: ' . $content['desc'], $statusCode);
+            $desc = isset($content['desc']) ? $content['desc'] : '';
+            throw new RequestErrorException('code: ' . $statusCode . ' msg: ' . $desc, $statusCode);
         }
 
         return ResultReturn::success($content);

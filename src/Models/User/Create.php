@@ -15,6 +15,17 @@ use Illuminate\Validation\Rule;
 
 class Create extends Model
 {
+    /**
+     * 创建网易云通信ID
+     *
+     * @param string $accid
+     *
+     * @return mixed
+     * @throws \Ailuoy\NeteaseIm\Exceptions\ParameterErrorException
+     * @throws \Ailuoy\NeteaseIm\Exceptions\RequestErrorException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * https://dev.yunxin.163.com/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/%E6%9C%8D%E5%8A%A1%E7%AB%AFAPI%E6%96%87%E6%A1%A3/%E7%BD%91%E6%98%93%E4%BA%91%E9%80%9A%E4%BF%A1ID?#%E5%88%9B%E5%BB%BA%E7%BD%91%E6%98%93%E4%BA%91%E9%80%9A%E4%BF%A1ID
+     */
     public function go(string $accid)
     {
         $parameters = $this->mergeArgs(['accid' => $accid]);
