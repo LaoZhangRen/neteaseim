@@ -12,7 +12,8 @@
 
 ## Introduce
 NeteaseIm 封装了网易云信 IM即时通讯API 
-源码来自https://github.com/ailuoy/neteaseim，此大佬为创建tag，composer不能安装。
+源码来自https://github.com/ailuoy/neteaseim
+此大佬为创建tag，composer不能安装。
 遂自己提交一下
 
 ## Requirement
